@@ -1,0 +1,92 @@
+### 1. 测试用户列表
+GET http://localhost:8080/user/list?pageNum=1&pageSize=5
+Accept: application/json
+
+### 2. 测试货物列表
+GET http://localhost:8080/goods/list?pageNum=1&pageSize=5
+Accept: application/json
+
+### 3. 测试机器人列表
+GET http://localhost:8080/robot/list?pageNum=1&pageSize=5
+Accept: application/json
+
+### 4. 测试采购单列表
+GET http://localhost:8080/purchase/list
+Accept: application/json
+
+### 5. 测试入库单列表
+GET http://localhost:8080/inbound/list
+Accept: application/json
+
+### 6. 测试库存列表
+GET http://localhost:8080/inventory/list
+Accept: application/json
+
+### 7. 测试机器人任务
+GET http://localhost:8080/task/list
+Accept: application/json
+
+### 8. 测试销售订单
+GET http://localhost:8080/order/list
+Accept: application/json
+
+### 9. 测试出库单
+GET http://localhost:8080/outbound/list
+Accept: application/json
+
+### 10. 测试运单
+GET http://localhost:8080/transport/list
+Accept: application/json
+
+### 11. 测试物流节点
+GET http://localhost:8080/transport-node/list
+Accept: application/json
+
+### 12. 测试直接入库
+POST http://localhost:8080/inbound/add-direct
+Content-Type: application/json
+
+{
+  "goodsName": "高性能显卡",
+  "actualQty": 50,
+  "targetLocationId": 1
+}
+
+### 测试下单 (自动生成订单和出库单)
+POST http://localhost:8080/order/create
+Content-Type: application/json
+
+{
+  "customerId": 2,
+  "receiverName": "小明",
+  "receiverPhone": "13800138000",
+  "receiverAddress": "武当山金顶",
+  "goodsName": "高性能显卡",
+  "qty": 1
+}
+
+### 1. 录入合格品 (qcStatus=1)
+POST http://localhost:8080/inbound/add-direct
+Content-Type: application/json
+
+{
+  "goodsName": "高性能显卡",
+  "actualQty": 10,
+  "targetLocationId": 1,
+  "qcStatus": 1
+}
+
+### 2. 录入不合格品 (qcStatus=2)
+POST http://localhost:8080/inbound/add-direct
+Content-Type: application/json
+
+{
+  "goodsName": "高性能显卡",
+  "actualQty": 2,
+  "targetLocationId": 1,
+  "qcStatus": 2
+}
+
+### 测试任务详情列表 (带名称)
+GET http://localhost:8080/task/list-detail
+Accept: application/json
